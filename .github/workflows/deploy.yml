@@ -1,23 +1,23 @@
-echo name: Deploy to GitHub Pages > .github\workflows\deploy.yml
-echo. >> .github\workflows\deploy.yml
-echo on: >> .github\workflows\deploy.yml
-echo   push: >> .github\workflows\deploy.yml
-echo     branches: [main] >> .github\workflows\deploy.yml
-echo. >> .github\workflows\deploy.yml
-echo jobs: >> .github\workflows\deploy.yml
-echo   build-and-deploy: >> .github\workflows\deploy.yml
-echo     runs-on: ubuntu-latest >> .github\workflows\deploy.yml
-echo     steps: >> .github\workflows\deploy.yml
-echo       - uses: actions/checkout@v4 >> .github\workflows\deploy.yml
-echo. >> .github\workflows\deploy.yml
-echo       - uses: actions/setup-node@v4 >> .github\workflows\deploy.yml
-echo         with: >> .github\workflows\deploy.yml
-echo           node-version: '20' >> .github\workflows\deploy.yml
-echo. >> .github\workflows\deploy.yml
-echo       - run: npm install >> .github\workflows\deploy.yml
-echo       - run: npm run build >> .github\workflows\deploy.yml
-echo. >> .github\workflows\deploy.yml
-echo       - uses: peaceiris/actions-gh-pages@v3 >> .github\workflows\deploy.yml
-echo         with: >> .github\workflows\deploy.yml
-echo           github_token: ${{ secrets.GITHUB_TOKEN }} >> .github\workflows\deploy.yml
-echo           publish_dir: ./out >> .github\workflows\deploy.yml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - run: npm install
+      - run: npm run build
+
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
