@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next build && next export", // Add this script
-    "deploy": "npm run build && npm run export" // Optional deploy script
+    "export": "next build && next export"
   },
-  "homepage": "https://vivek-the-coder.github.io/AgriConnect", // Add this line
+  "homepage": "https://vivek-the-coder.github.io/AgriConnect"
 }
